@@ -1,0 +1,301 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #0A0A0A;
+    --bg-secondary: #111111;
+    --text-primary: #FFFFFF;
+    --text-secondary: #E5E7EB;
+    --accent: #00f5d4;
+    --accent-dim: rgba(0, 245, 212, 0.15);
+    --border: rgba(255, 255, 255, 0.12);
+    --card-bg: rgba(255, 255, 255, 0.04);
+
+    /* Backwards compatibility variables */
+    --black: var(--bg);
+    --off-white: var(--text-primary);
+    --green: var(--accent);
+    --green-dim: var(--accent);
+    --border-green: var(--accent-dim);
+    --border-faint: var(--border);
+    --surface: var(--bg-secondary);
+    --surface-hover: rgba(255, 255, 255, 0.05);
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text-primary);
+    cursor: none; /* Hide default cursor */
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--bg);
+  }
+
+  /* Custom Monospace Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 0px;
+    transition: background 0.3s ease;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+  }
+
+  a, button {
+    cursor: none;
+  }
+
+  input, textarea {
+    cursor: text !important;
+  }
+
+  /* Typography Scales */
+  h1 {
+    font-family: var(--font-syne), sans-serif;
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 800;
+    line-height: 1.0;
+  }
+
+  h2 {
+    font-family: var(--font-syne), sans-serif;
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  h3 {
+    font-family: var(--font-syne), sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  /* Force body copy minimum height and line height */
+  p, li, span, input, textarea, button, label {
+    font-family: var(--font-inter), sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  /* Tag labels */
+  .tag-label {
+    font-family: var(--font-ibm-plex-mono), monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+}
+
+/* NOISE/GRAIN OVERLAY */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9995;
+  opacity: 0.01; /* Extra subtiel noise */
+}
+
+/* SCANLINES */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9996;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.01) 2px,
+    rgba(0, 0, 0, 0.01) 4px
+  );
+}
+
+/* RADIAL GLOW BACKGROUNDS */
+.bg-glow-radial {
+  background: radial-gradient(circle at center, rgba(0, 245, 212, 0.04) 0%, transparent 60%);
+}
+
+/* GLASSMORPHISM UTILITY */
+.glass {
+  background: rgba(30, 30, 35, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.glass-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+  background-color: #111111;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* FAKE BROWSER CHROME */
+.browser-chrome {
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid var(--border);
+}
+
+/* CUSTOM SWEEP HOVER STATE FOR BUTTONS */
+.btn-sweep {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.4s ease;
+}
+
+.btn-sweep::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  transition: transform 0.4s ease;
+  z-index: -1;
+  transform: skewX(-15deg);
+}
+
+.btn-sweep:hover::before {
+  transform: translateX(115%) skewX(-15deg);
+}
+
+/* ===== HERO RIGHT ===== */
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 2rem;
+}
+
+/* ===== ROTATING BADGE (Optie F) ===== */
+.rotating-badge {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.rotating-ring {
+  width: 100%;
+  height: 100%;
+  animation: spin 18s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.circle-text {
+  fill: var(--accent);          /* cyaan */
+  font-family: 'DM Mono', var(--font-ibm-plex-mono), monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Centraal in de cirkel */
+.badge-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge-initials {
+  font-family: var(--font-syne), sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+/* Pulserende groene dot — "available" status */
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00f5d4;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(0,245,212,0.4); }
+  50%       { opacity: 0.8; transform: scale(1.1); box-shadow: 0 0 0 6px rgba(0,245,212,0); }
+}
+
+/* ===== TERMINAL TYPEWRITER (Optie H) ===== */
+.terminal-line {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  font-family: 'DM Mono', var(--font-ibm-plex-mono), monospace;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.terminal-prompt {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.typewriter {
+  color: var(--text-primary);
+}
+
+.cursor {
+  color: var(--accent);
+  animation: blink 1s step-end infinite;
+  margin-left: 1px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Mobiel: cirkel + typewriter onder naam, niet naast */
+@media (max-width: 768px) {
+  .hero-right {
+    margin-top: 2rem;
+    width: 100%;
+  }
+  .rotating-badge {
+    width: 150px;
+    height: 150px;
+  }
+  .circle-text {
+    font-size: 9.5px;
+  }
+}
+
+/* ===== HYDRATION / JS FALLBACK ===== */
+/* Ensures elements are visible if client-side JS fails to load or is compiling */
+html:not(.js-loaded) [style*="opacity: 0"],
+html:not(.js-loaded) [style*="opacity:0"] {
+  opacity: 1 !important;
+  transform: none !important;
+}
