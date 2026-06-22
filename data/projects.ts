@@ -15,7 +15,7 @@ export const projects: Project[] = [
     title: "FashionLabs Modewebsite",
     desc: "Online platform voor een modebedrijf met productoverzicht en winkelflow.",
     tags: ["React", "Next.js", "Tailwind CSS", "PHP"],
-    preview: "https://www.fashionlabs-yonder.nl/",
+    preview: "https://fashionlabs-modewebsite.vercel.app/",
     github: "https://github.com/Wavezy11/Fashionlabs_modewebsite",
     category: "School · Web",
     image: "/fashionshow.png",
