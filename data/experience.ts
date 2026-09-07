@@ -33,7 +33,7 @@ export const internships: ExperienceItem[] = [
   {
     role: "HBO Cybersecurity (deeltijd)",
     company: "Avans Hogeschool",
-    date: "Sep 2026 – Heden (Upcoming)",
+    date: "Sep 2026 – Heden",
     badges: ["HBO", "Cybersecurity", "Deeltijd"],
     tasks: [
       "Focus op netwerkbeveiliging, cryptografie, threat intelligence en risk management",
