@@ -43,8 +43,8 @@ export const projects: Project[] = [
   {
     num: "04",
     title: "Yurls Dashboard",
-    desc: "Dashboard voor het Practoraat Interactieve Technologie van Yonder. Ontwikkeld tijdens stage waarbij docenten via SharePoint direct vakmateriaal kunnen beheren dat automatisch op het onderwijsplatform wordt getoond. Inclusief landingspagina's met gamification-features.",
-    tags: ["Next.js", "React", "SharePoint", "TypeScript"],
+    desc: "Dashboard voor het Practoraat Interactieve Technologie van Yonder. Ontwikkeld tijdens stage waarbij docenten via SharePoint direct vakmateriaal kunnen beheren dat automatisch op het onderwijsplatform wordt getoond.",
+    tags: ["HTML", "JavaScript", "SharePoint", "Tailwind CSS", "Azure"],
     preview: "https://yurls-dashboard.vercel.app/",
     github: null,
     category: "Internship · Web",
